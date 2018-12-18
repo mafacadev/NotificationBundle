@@ -17,5 +17,9 @@
             "email": "ing.fabiancn@gmail.com"
         }
     ],
-    "minimum-stability": "beta"
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "some_version-dev"
+        }
+    }
 }
