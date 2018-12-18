@@ -1,25 +1,26 @@
 {
     "name": "osmos/notification-bundle",
     "description": "#",
-    "type": "Library",
+    "type": "symfony-bundle",
     "require": {
         "symfony/symfony": ">=2.7"
     },
     "autoload" : {
         "psr-0" : {
-            "Osmos\\NotificationBundle" : ""
+            "OsmosNotificationBundle" : ""
         }
     },
-    "target-dir" : "Osmos/NotificationBundle",
+    "target-dir" : "OsmosNotificationBundle",
     "authors": [
         {
             "name": "fabodev",
             "email": "ing.fabiancn@gmail.com"
         }
     ],
+    "repositories" : [{ }],
     "extra" : {
         "branch-alias" : {
-            "dev-master" : "some_version-dev"
+            "dev-master" : "master"
         }
     }
 }
