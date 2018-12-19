@@ -6,8 +6,8 @@
         "symfony/symfony": ">=2.7"
     },
     "autoload" : {
-        "psr-0" : {
-            "Osmos\NotificationBundle" : ""
+        "psr-4" : {
+            "Osmos/NotificationBundle" : "Osmos/NotificationBundle"
         }
     },
     "target-dir" : "Osmos/NotificationBundle",
