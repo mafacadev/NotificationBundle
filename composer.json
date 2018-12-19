@@ -22,10 +22,5 @@
         "branch-alias" : {
             "dev-master" : "master"
         }
-    },
-    " config " : {
-        " github-oauth " : {
-            " github.com " : "fabo8619"
-        }
     }
 }
