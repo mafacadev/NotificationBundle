@@ -7,10 +7,10 @@
     },
     "autoload" : {
         "psr-0" : {
-            "OsmosNotificationBundle" : ""
+            "Osmos\NotificationBundle" : ""
         }
     },
-    "target-dir" : "OsmosNotificationBundle",
+    "target-dir" : "Osmos/NotificationBundle",
     "authors": [
         {
             "name": "fabodev",
