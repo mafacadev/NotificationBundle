@@ -1,22 +1,27 @@
 {
-    "name": "osmos/notification-bundle",
-    "description": "#",
+    "name": "osmos/notificationbundle",
+    "description": "This bundle helps you to generate a notification.",
     "type": "symfony-bundle",
-    "require": {
-        "symfony/symfony": ">=2.7"
-    },
-    "autoload" : {
-        "psr-0" : {
-            "Osmos\\NotificationBundle" : "Osmos/NotificationBundle"
-        }
-    },
-    "target-dir" : "Osmos/NotificationBundle",
     "authors": [
         {
             "name": "fabodev",
             "email": "ing.fabiancn@gmail.com"
         }
     ],
+    "require": {
+        "symfony/framework-bundle": ">=2.7"
+    },
+    "autoload" : {
+        "exclude-from-classmap": ["/Tests/"],
+        "psr-4" : {
+            "Osmos\\NotificationBundle\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Osmos\\NotificationBundle\\": ""
+        }
+    },
     "repositories" : [{ }],
     "extra" : {
         "branch-alias" : {
