@@ -7,10 +7,9 @@
     },
     "autoload" : {
         "psr-4" : {
-            "Osmos/NotificationBundle" : "Osmos/NotificationBundle"
+            "Osmos\\NotificationBundle" : "NotificationBundle"
         }
     },
-    "target-dir" : "Osmos/NotificationBundle",
     "authors": [
         {
             "name": "fabodev",
