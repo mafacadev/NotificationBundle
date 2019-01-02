@@ -32,3 +32,5 @@ For use it in another project
 <pre><code>
     new \NotificationBundle\NotificationBundle()
 </code></pre>
+
+GOD LUCK (-.-)// !!
