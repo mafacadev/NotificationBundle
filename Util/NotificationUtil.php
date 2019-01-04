@@ -41,6 +41,12 @@ class NotificationUtil
     private $mailBody;
     /** @var boolean $isMail */
     private $isMail;
+    /** @var string $mailTemplate */
+    private $mailTemplate;
+    /** @var $approve */
+    private $approve;
+    /** @var  $rejected */
+    private $rejected;
 
     /**
      * @return string
@@ -232,6 +238,54 @@ class NotificationUtil
     public function setIsMail($isMail)
     {
         $this->isMail = $isMail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMailTemplate()
+    {
+        return $this->mailTemplate;
+    }
+
+    /**
+     * @param string $mailTemplate
+     */
+    public function setMailTemplate($mailTemplate)
+    {
+        $this->mailTemplate = $mailTemplate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApprove()
+    {
+        return $this->approve;
+    }
+
+    /**
+     * @param mixed $approve
+     */
+    public function setApprove($approve)
+    {
+        $this->approve = $approve;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRejected()
+    {
+        return $this->rejected;
+    }
+
+    /**
+     * @param mixed $rejected
+     */
+    public function setRejected($rejected)
+    {
+        $this->rejected = $rejected;
     }
 
 }

@@ -36,9 +36,8 @@ class NotificationSubscriber implements EventSubscriberInterface
 
     public function onNotificationReceive(NotificationEvent $event)
     {
-        $event->getLogger()->debug('ON THE EVENT ------>>>>>');
-        $resp = $this->notificationService->sendNotification($event->getNotification());
-        $event->getLogger()->error($resp);
+        $this->notificationService->sendNotification($event->getNotification());
+
     }
 
 }

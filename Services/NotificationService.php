@@ -39,7 +39,6 @@ class NotificationService
 
     public function sendNotification(NotificationUtil $notificationUtil)
     {
-        $this->logger->debug('INTO NotificationService...');
         // Obtain the channels that are linked to the user
         $sql = "
             SELECT
@@ -57,11 +56,9 @@ class NotificationService
 
         // If dont have a subscription do nothing
         if (count($sendNotification) == 0) {
-            $this->logger->debug(sprintf("No estas suscrito para recibir notificaciones de: %s", $notificationUtil->getChannel()));
-            return 'U ARE NOT SUBSCRIBED (X_X)';
-        }
+            $this->logger->info(sprintf("No estas suscrito para recibir notificaciones de: %s", $notificationUtil->getChannel()));
 
-        $this->logger->debug("U'RE SUBSCRIBED, DOING POST.....");
+        }
 
         /** @var RestClientUtil $restClient */
         $restClient = new RestClientUtil($this->server);
@@ -73,21 +70,18 @@ class NotificationService
             'message'           => $notificationUtil->getMessage(),
             'sendTo'            => $notificationUtil->getSendTo(),
             'subject'           => $notificationUtil->getMailSubject(),
-            'template'          => 'default-template',
+            'template'          => $notificationUtil->getMailTemplate() ? $notificationUtil->getMailTemplate() : 'default_template',
             'year'              => date("Y"),
             'emitterId'         => $notificationUtil->getEmitterId(),
             'receiverId'        => $notificationUtil->getReceiverId(),
             'channel'           => $notificationUtil->getChannel(),
             'frontRequestUri'   => $notificationUtil->getFrontRequestUri(),
+            'approve'           => $notificationUtil->getApprove() ? $notificationUtil->getApprove() : '',
+            'reject'            => $notificationUtil->getRejected() ? $notificationUtil->getRejected() : ''
         ]);
 
-        $response = $restClient->doPost('notificationTray');
+        $restClient->doPost('notificationTray');
 
-        $this->logger->debug('PRINTING RESPONSE');
-        $this->logger->debug(gettype($response));
-        $this->logger->debug($response);
-
-        return 'NOTIFICATION SENDED';
     }
 
 }
