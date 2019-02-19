@@ -28,9 +28,9 @@ class NotificationSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        // TODO: Implement getSubscribedEvents() method.
         return [
             NotificationEvent::NAME => 'onNotificationReceive',
+            NotificationEventEvent::NAME => 'onNotificationEventReceive'
         ];
     }
 
@@ -38,6 +38,11 @@ class NotificationSubscriber implements EventSubscriberInterface
     {
         $this->notificationService->sendNotification($event->getNotification());
 
+    }
+
+    public function onNotificationEventReceive(NotificationEventEvent $event)
+    {
+        $this->notificationService->sendNotificationEvent($event->getNotificationEventUtil());
     }
 
 }

@@ -8,6 +8,8 @@
 
 namespace NotificationBundle\Util;
 
+use Monolog\Logger;
+
 /**
  * Create a Plain Old PHP Object
  * for represent a NotificationTray entity
@@ -286,6 +288,36 @@ class NotificationUtil
     public function setRejected($rejected)
     {
         $this->rejected = $rejected;
+    }
+
+    /**
+     * Subscribe user to available notification channels
+     *
+     * @param $connection
+     * @param $logger Logger
+     * @param $userId
+     *
+     * @return bool
+     */
+    public static function subscribeToNotificationChannels($connection, $logger, $userId)
+    {
+
+        $sql = "
+            INSERT INTO notifications_user_channels 
+              (active, channel_id, user_id)
+            (SELECT 1, id, ? FROM notifications_channel WHERE active = 1)
+        ";
+
+        try {
+            $connection->executeUpdate($sql, array($userId));
+
+        } catch (\Exception $exc) {
+            $logger->error(sprintf("%s ---- %s", $exc->getMessage(), $exc->getTraceAsString()));
+
+            return false;
+        }
+
+        return true;
     }
 
 }

@@ -11,6 +11,7 @@ namespace NotificationBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Monolog\Logger;
+use NotificationBundle\Util\NotificationEventUtil;
 use NotificationBundle\Util\NotificationUtil;
 use NotificationBundle\Util\RestClientUtil;
 
@@ -58,6 +59,8 @@ class NotificationService
         if (count($sendNotification) == 0) {
             $this->logger->info(sprintf("No estas suscrito para recibir notificaciones de: %s", $notificationUtil->getChannel()));
 
+            return;
+            
         }
 
         /** @var RestClientUtil $restClient */
@@ -82,6 +85,19 @@ class NotificationService
 
         $restClient->doPost('notificationTray');
 
+    }
+
+    public function sendNotificationEvent(NotificationEventUtil $notificationEventUtil)
+    {
+        $restClient = new RestClientUtil($this->server);
+        $restClient->setPostFields([
+            'event_name'    => $notificationEventUtil->getEventName(),
+            'event_message' => $notificationEventUtil->getEventMessage(),
+            'thrower_id'    => $notificationEventUtil->getEventMessage(),
+            'listener_id'   => $notificationEventUtil->getListenerId()
+        ]);
+
+        $restClient->doPost('notificationEvent');
     }
 
 }

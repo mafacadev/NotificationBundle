@@ -9,6 +9,7 @@
 namespace NotificationBundle\Event;
 
 
+use NotificationBundle\Util\NotificationEventUtil;
 use NotificationBundle\Util\NotificationUtil;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\Event;
