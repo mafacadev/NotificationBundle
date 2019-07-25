@@ -7,7 +7,7 @@ For use it in another project
     [...]
         "require" : {
             [...]
-            "NotificationBundle" : "dev-master"
+            "osmos/notification-bundle" : "dev-master",
         },
         "repositories" : [{
                 "type" : "vcs",
