@@ -93,7 +93,7 @@ class NotificationService
         $restClient->setPostFields([
             'event_name'    => $notificationEventUtil->getEventName(),
             'event_message' => $notificationEventUtil->getEventMessage(),
-            'thrower_id'    => $notificationEventUtil->getEventMessage(),
+            'thrower_id'    => $notificationEventUtil->getThrowerId(),
             'listener_id'   => $notificationEventUtil->getListenerId()
         ]);
 
